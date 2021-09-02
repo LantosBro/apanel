@@ -14,7 +14,7 @@ class AddForeignToBooks extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->foreign('author_id')->references('id')->on('authors');
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
         });
     }
 
