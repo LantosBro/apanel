@@ -25,4 +25,5 @@ Route::middleware(['role:admin'])->prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminHome');
 
     Route::resource('authors', App\Http\Controllers\Admin\AuthorsController::class);
+    Route::resource('books', App\Http\Controllers\Admin\BooksController::class);
 });

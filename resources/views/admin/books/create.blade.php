@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Добавление автора')
+@section('title', 'Добавление книги')
 
 @section('content')
     <div class="content-header">
@@ -25,13 +25,29 @@
                 <div class="col-lg-12">
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form action="{{ route('authors.store') }}" method="POST">
+                        <form action="{{ route('books.store') }}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="authorName">Имя автора</label>
-                                    <input id="authorName" type="text" name="name" class="form-control" placeholder="Введите имя автора" required>
+                                    <label for="bookName">Название книги</label>
+                                    <input id="bookName" type="text" name="title" class="form-control" placeholder="Введите название книги" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="bookDescription">Описание книги</label>
+                                    <input id="bookDecription" type="text" name="description" class="form-control" placeholder="Опишите книгу" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>Выберите автора</label>
+                                        <select name="author_id" class="form-control" required>
+                                            @foreach ($authors as $author)
+                                                <option value="{{ $author['id'] }}">{{ $author['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Добавить</button>
                                 </div>

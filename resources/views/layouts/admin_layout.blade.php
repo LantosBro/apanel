@@ -73,12 +73,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('books.index') }}" class="nav-link">
                                     <p>Все книги</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('books.create') }}" class="nav-link">
                                     <p>Добавить книгу</p>
                                 </a>
                             </li>
