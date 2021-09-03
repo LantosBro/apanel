@@ -69,11 +69,16 @@ class BooksController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(Book $book)
     {
-        //
+        $authors = Author::orderBy('name', 'ASC')->get();
+
+        return view('admin.books.edit', [
+            'authors' => $authors,
+            'book' => $book
+        ]);
     }
 
     /**
@@ -85,7 +90,12 @@ class BooksController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->author_id = $request->author_id;
+        $book->save();
+
+        return redirect()->back()->withSuccess('Книга изменена успешно');
     }
 
     /**

@@ -30,8 +30,8 @@
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Имя автора</label>
-                                    <input type="text" value="{{ $author['name'] }}" name="name" class="form-control" placeholder="Введите имя автора" required>
+                                    <label for="authorName">Имя автора</label>
+                                    <input id="authorName" type="text" value="{{ $author['name'] }}" name="name" class="form-control" placeholder="Введите имя автора" required>
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Изменить</button>
