@@ -22,5 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['role:admin'])->prefix('admin')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminHome');
 });
