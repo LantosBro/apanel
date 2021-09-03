@@ -10,6 +10,12 @@
                     <h1 class="m-0">Добавление автора</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    <h3><i class="icon fa fa-check"></i>{{ session('success') }}</h3>
+                </div>
+            @endif
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -24,7 +30,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Имя автора</label>
-                                    <input type="text" class="form-control" placeholder="Введите имя автора" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Введите имя автора" required>
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Добавить</button>

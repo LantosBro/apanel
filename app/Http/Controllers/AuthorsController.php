@@ -35,7 +35,11 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $author = new Author();
+        $author->name = $request->name;
+        $author->save();
+
+        return redirect()->back()->withSuccess('Автор добавлен успешно');
     }
 
     /**
