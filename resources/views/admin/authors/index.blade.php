@@ -41,7 +41,7 @@
                                     {{ $author['name'] }}
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="{{ route('authors.edit', $author['id']) }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Изменить

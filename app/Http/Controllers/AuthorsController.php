@@ -65,7 +65,9 @@ class AuthorsController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('admin.authors.edit', [
+            'author' => $author
+        ]);
     }
 
     /**
@@ -77,7 +79,10 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $author->name = $request->name;
+        $author->save();
+
+        return redirect()->back()->withSuccess('Автор изменён успешно');
     }
 
     /**
