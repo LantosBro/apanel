@@ -12,11 +12,15 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $books = Book::orderBy('created_at', 'DESC')->get();
+
+        return view('admin.books.index', [
+            'books' => $books
+        ]);
     }
 
     /**
@@ -41,7 +45,13 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new Book();
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->author_id = $request->author_id;
+        $book->save();
+
+        return redirect()->back()->withSuccess('Книга добавлена успешно');
     }
 
     /**
