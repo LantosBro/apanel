@@ -10,6 +10,12 @@
                     <h1 class="m-0">Все авторы</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    <h3><i class="icon fa fa-check"></i>{{ session('success') }}</h3>
+                </div>
+            @endif
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -46,11 +52,15 @@
                                         </i>
                                         Изменить
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Удалить
-                                    </a>
+                                    <form method="post" action="{{ route('authors.destroy', $author['id'])}}" style="display: inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm delete-btn">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Удалить
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

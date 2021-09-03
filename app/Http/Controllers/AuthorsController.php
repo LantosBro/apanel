@@ -93,6 +93,7 @@ class AuthorsController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+        return redirect()->back()->withSuccess('Автор удалён успешно');
     }
 }
