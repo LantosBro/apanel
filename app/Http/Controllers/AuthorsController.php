@@ -14,7 +14,11 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::orderBy('name', 'DESC')->get();
+
+        return view('admin.authors.index', [
+            'authors' => $authors
+        ]);
     }
 
     /**
