@@ -12,7 +12,7 @@
             @if (Route::has('login'))
                 <div>
                     @auth
-                        <a href="{{ route('admin.index') }}">Админка</a>
+                        <a href="{{ route('adminHome') }}">Админка</a>
                     @else
                         <a href="{{ route('login') }}">Вход</a>
 

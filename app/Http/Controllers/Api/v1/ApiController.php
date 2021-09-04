@@ -22,5 +22,17 @@ class ApiController extends Controller
     public function getBookById(Request $request) {
         return Book::find($request->id);
     }
-    
+    public function updateBook(Request $request){
+        $request->validate([
+            'title' => 'required|unique:posts',
+            'description' => 'required',
+        ]);
+        $book = new Book();
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->author_id = $request->author_id;
+        $book->save();
+
+        return json_encode(['result' => 'success']);
+    }
 }

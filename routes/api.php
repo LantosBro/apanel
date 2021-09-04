@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/books/list', [\App\Http\Controllers\Api\v1\ApiController::class, 'getBooks']);
-Route::get('/books/by-id/{id}', [\App\Http\Controllers\Api\v1\ApiController::class, 'getBookById'])->where('id', '[0-9]+');;
+Route::get('/books/by-id/{id}', [\App\Http\Controllers\Api\v1\ApiController::class, 'getBookById'])->where('id', '[0-9]+');
+Route::post('/books/update', [\App\Http\Controllers\Api\v1\ApiController::class, 'updateBook']);
