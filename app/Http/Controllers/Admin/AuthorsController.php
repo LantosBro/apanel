@@ -40,6 +40,9 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:authors',
+        ]);
         $author = new Author();
         $author->name = $request->name;
         $author->save();

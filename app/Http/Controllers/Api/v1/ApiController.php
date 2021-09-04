@@ -24,10 +24,12 @@ class ApiController extends Controller
     }
     public function updateBook(Request $request){
         $request->validate([
-            'title' => 'required|unique:posts',
+            'id' => 'required',
+            'title' => 'required|unique:books',
             'description' => 'required',
+            'author_id' => 'required',
         ]);
-        $book = new Book();
+        $book = Book::find($request->id);
         $book->title = $request->title;
         $book->description = $request->description;
         $book->author_id = $request->author_id;
