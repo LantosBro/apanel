@@ -19,4 +19,8 @@ class ApiController extends Controller
         }
         return json_encode($books_done);
     }
+    public function getBookById(Request $request) {
+        return Book::find($request->id);
+    }
+    
 }
