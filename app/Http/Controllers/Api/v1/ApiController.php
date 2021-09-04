@@ -34,7 +34,10 @@ class ApiController extends Controller
         $request->validate([
             'id' => 'exists:App\Models\Book,id',
         ]);
-        return Book::find($request->id);
+        $book = Book::find($request->id);
+        if ($book)
+            return $book;
+        return json_encode(['result' => 'fail']);
     }
 
     /**
