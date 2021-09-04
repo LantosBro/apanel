@@ -18,7 +18,7 @@ class AuthorsController extends Controller
         $authors = Author::orderBy('name', 'ASC')->get();
 
         return view('admin.authors.index', [
-            'authors' => $authors
+            'authors' => $authors,
         ]);
     }
 

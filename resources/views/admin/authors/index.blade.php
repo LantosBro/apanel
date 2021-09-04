@@ -29,8 +29,11 @@
                             <th style="width: 5%">
                                 ID
                             </th>
-                            <th style="width: 65%">
+                            <th style="width: 55%">
                                 Имя
+                            </th>
+                            <th style="width: 10%">
+                                Кол-во книг
                             </th>
                             <th style="width: 30%">
 
@@ -45,6 +48,9 @@
                                 </td>
                                 <td>
                                     {{ $author['name'] }}
+                                </td>
+                                <td>
+                                    {{ $author->books()->count() }}
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="{{ route('authors.edit', $author['id']) }}">
