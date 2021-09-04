@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
+    /**
+     * Get all books with author names
+     *
+     * @return false|string
+     */
     public function getBooks(){
         $books = Book::all();
         $books_done = [];
@@ -19,9 +24,23 @@ class ApiController extends Controller
         }
         return json_encode($books_done);
     }
+
+    /**
+     * Get book data by id
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function getBookById(Request $request) {
         return Book::find($request->id);
     }
+
+    /**
+     * Update book data by id
+     *
+     * @param Request $request
+     * @return false|string
+     */
     public function updateBook(Request $request){
         $request->validate([
             'id' => 'required',
