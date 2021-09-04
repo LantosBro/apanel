@@ -16,7 +16,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('created_at', 'DESC')->get();
+        $books = Book::orderBy('created_at', 'DESC')->with('author')->get();
 
         return view('admin.books.index', [
             'books' => $books

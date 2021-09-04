@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $authors = Author::all();
+        $authors = Author::with('books')->get();
         return view('welcome', [
             'authors' => $authors
         ]);
