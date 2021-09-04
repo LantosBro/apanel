@@ -32,6 +32,9 @@ class ApiController extends Controller
      * @return mixed
      */
     public function getBookById(Request $request) {
+        $request->validate([
+            'id' => 'exists:App\Models\Book,id',
+        ]);
         return Book::find($request->id);
     }
 
@@ -43,7 +46,7 @@ class ApiController extends Controller
      */
     public function updateBook(Request $request){
         $request->validate([
-            'id' => 'required',
+            'id' => 'required|exists:App\Models\Book,id',
             'title' => 'required|unique:books',
             'description' => 'required',
             'author_id' => 'required',
@@ -56,4 +59,18 @@ class ApiController extends Controller
 
         return json_encode(['result' => 'success']);
     }
+
+    public function deleteBook(Request $request){
+        $request->validate([
+            'id' => 'exists:App\Models\Book,id',
+        ]);
+        $book = Book::find($request->id);
+        if ($book) {
+            $book->delete();
+            return json_encode(['result' => 'success']);
+        }
+
+        return json_encode(['result' => 'fail']);
+    }
+
 }
